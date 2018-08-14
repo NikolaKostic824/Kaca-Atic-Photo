@@ -1,0 +1,392 @@
+//BOJE
+$boja-crna: #000000;
+$boja-bela: #ffffff;
+$boja-ljubicasta:#7E4498;
+$boja-ljubicasta2:#AC4096;
+$boja-roze:#EC3182;
+$boja-roze2:#DB4A99;
+
+//ANIMACIJE
+@keyframes moveInRight {
+    0%{
+        opacity: 0;
+        transform: translateX(13rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInLeft {
+    0%{
+        opacity: 0;
+        transform: translateX(-13rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0%{
+        opacity: 0;
+        transform: translateY(13rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Norican', cursive;
+    font-weight: 400;
+    line-height: 1.7;
+    color: $boja-bela;
+    background:linear-gradient(to right,$boja-roze2,$boja-ljubicasta2);
+}
+
+.container{
+    max-width: 120rem;
+    margin: 5rem auto;
+    min-height: 50rem;
+    background-color: $boja-bela;
+    display: grid;
+    grid-template-rows: 15rem 30rem 80rem 15rem;
+    //grid-template-columns: 1fr;
+}
+
+.heading {
+    background-color: $boja-crna;
+    width: inherit;
+    height:15rem;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+    
+    
+    .info {
+        background: linear-gradient(to bottom,$boja-ljubicasta2,$boja-roze2);
+        text-decoration: none;
+        width: 100%;
+        max-height: 100%;
+        cursor: pointer;
+        color: $boja-bela;
+        font-size: 1.75rem;
+        clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+        
+
+        animation-name: moveInLeft;
+        animation-duration: .75s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: backwards;
+
+        &__item{
+            list-style: none;
+            margin-top: .5rem;
+            margin-left: 2rem;
+            &:first-child {
+                margin-top: 1rem;
+            } 
+
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+        }
+
+        &__link{
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color:$boja-bela;
+        }
+
+        &__icon{
+            height: 2.75rem;
+            width: 2.75rem;
+            margin-right: 1rem;
+        }
+    }
+
+    .logo {
+        width: 35rem;
+        height: inherit;
+        animation-name: moveInBottom;
+        animation-duration: .75s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: backwards;
+        
+    }
+    .dug {
+        &__dugme {
+            display: inline-block;
+            text-align: center;
+            margin-top: 3rem;
+            margin-left: 3rem;
+            text-decoration: none;
+            width: 16rem;
+            font-weight: 400;
+            font-size: 2.5rem;
+            color:$boja-bela;
+            border-radius: 8rem;
+            background:linear-gradient(to right, $boja-ljubicasta2, $boja-crna);
+            cursor: pointer;
+            
+            transition: all .7s;
+    
+            animation-name: moveInRight;
+            animation-duration: .75s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: backwards;    
+        }
+
+        &__dugme:hover {
+            background-position: right center;
+        }
+    }
+    
+}
+
+.kaca {
+    background: linear-gradient($boja-crna,$boja-ljubicasta2);
+    display: grid;
+    grid-template-columns: 25rem 60rem;
+    justify-content: space-around;
+    &__kartica {
+       
+        height: 24rem;
+        margin-top: 3rem;
+        border-radius: 3rem;
+        transition: all .8s ease;
+        perspective: 150rem;
+        cursor: pointer;
+        position: relative;
+        
+
+        &--f {
+            background-size: cover;
+            background-image: url(../images/kaca3.png);
+            transition: all .8s ease;
+            height: 24rem;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+        }
+
+        &--b {
+            background-size: cover;
+            background-image: url(../images/kaca2.png);
+            transition: all .8s ease;
+            transform: rotateY(180deg);
+            height: 24rem;
+            position: absolute;
+            width: 100%;
+            backface-visibility: hidden;
+            height: 100%;
+            border-radius: inherit;
+        }
+
+        animation-name: moveInLeft;
+        animation-duration: .75s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: backwards;
+
+        &:hover &--f {
+            transform: rotateY(-180deg);
+        }
+
+        &:hover &--b {
+           transform: rotateY(0);
+        }
+    }
+
+    &__text{
+        background-color: $boja-bela;
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-rows: 1fr;
+        align-items: center;
+        padding-left: 3rem;
+        
+        
+        height: 24rem;
+        margin-top: 3rem;
+        transform: skewX(-12deg);
+        
+        & > * {
+            transform: skewX(12);
+        }
+
+        animation-name: moveInRight;
+            animation-duration: .75s;
+            animation-timing-function: ease-out;
+            animation-fill-mode: backwards;
+
+        &--naslov {
+            background-image: linear-gradient(to right, $boja-crna, $boja-ljubicasta2);
+            font-size: 5rem;
+            text-align: center;
+            display: inline-block; 
+            color: transparent;
+
+            -webkit-background-clip: text;
+            cursor: pointer;
+            transition: all .2s;
+
+            &:hover {
+                transform: skewY(2deg) skewX(15deg) scale(1.1);
+                text-shadow: .5rem 1rem 2rem rgba($boja-ljubicasta2, .2);
+            }
+        }
+
+        &--par {
+            display: inline-block;
+            width: 30rem;
+            font-size: 1.5rem;
+            color: $boja-crna;
+            text-align: center;
+            padding-left: 6.5rem;
+        }
+    }
+}
+
+.galerija {
+    background: linear-gradient($boja-ljubicasta2,$boja-crna);
+    
+    &__nav {
+        background:linear-gradient(to right, $boja-bela,$boja-crna);
+        height: 7.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+
+        &--text {
+            color: $boja-roze2;
+            margin-left: 3rem;
+            font-size: 4rem;
+        }
+    }
+
+
+    &__lightbox {
+        width: 90%;
+        margin: 0 auto;
+        
+    }
+}
+
+.filter ul {
+    display: flex;
+    margin-right: 3rem;
+    width: 40rem;
+    justify-content: space-around;
+}
+
+.filter li {
+    list-style: none;
+        font-size: 2rem;
+}
+
+.filter a {
+    text-decoration: none;
+        color: $boja-bela;
+}
+
+/*.lista a:hover {
+    color: $boja-ljubicasta2;
+    border-bottom: .3rem solid $boja-ljubicasta2;
+}*/
+
+.filter li.current a,
+  .filter a:hover {
+    color: $boja-ljubicasta2;
+    border-bottom: .3rem solid $boja-ljubicasta2;
+}
+
+.slike {
+
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(4,1fr);
+    margin-left: 3rem;
+    
+
+
+    /*&__item {
+        list-style-type: none;
+    }*/
+
+    &__img {
+        width: 23rem;
+        height:15rem;
+        border-radius: .5rem;
+        cursor: pointer;
+    }
+}
+
+.slike li {
+    list-style: none;
+}
+
+.footer {
+    background-color:$boja-crna;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    justify-items: center;
+
+    &__autor{
+        width: 100%;
+        text-align: center;
+
+        &--text {
+            position: relative;
+            top: 7.5rem;
+        }
+    }
+
+    &__logo2{
+        width: 35rem;
+        height: 15rem;
+    }
+
+    &__quote {
+        background: linear-gradient(to bottom, $boja-ljubicasta2, $boja-roze);
+        clip-path: polygon(25% 0%, 100% 1%, 100% 100%, 25% 100%, 0% 50%);
+        text-align: center;
+        width: 100%;
+
+        &--text {
+            position: relative;
+            top: 7.5rem;
+            left: 1.7rem;
+        }
+        
+    }
+}
+
+.head {
+    text-align: center;
+    font-size: 3rem;
+   margin-top: 2rem;
+}
